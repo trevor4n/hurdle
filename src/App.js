@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Wordnik from './Components/Wordnik';
 
 function App() {
   return (
@@ -17,7 +18,12 @@ function App() {
         >
           Learn React
         </a>
+        {/* Wordnik */}
+        <Wordnik />
       </header>
+      <main>
+        
+      </main>
     </div>
   );
 }

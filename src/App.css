@@ -26,13 +26,14 @@
   background-color: aqua;
 }
 main {
-  height: 80vh;
+  height: 60vh;
 }
 h1 {
   margin: 1vmin 1vmin 0vmin 1vmin;
 }
 
 h2 {
+  visibility: hidden;
   margin:5px;
 }
 
@@ -56,7 +57,9 @@ td {
   display: inline-block;
   padding: 3px;
 }
-
+footer{
+  height: 20vh;
+}
 
 
 

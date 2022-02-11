@@ -5,6 +5,7 @@ const Grid = (props) => {
   const [grid, setGrid] = useState(props.rows)
 
   const gridItems = grid.map((row, index) =>
+      // <li key={row.toString()}>
       // <React.Fragment key={row.toString()}>
       <tbody key={index}>
         {row}

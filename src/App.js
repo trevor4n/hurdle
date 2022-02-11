@@ -5,7 +5,12 @@ import Row from './Components/Row/Row';
 import { useEffect, useState } from 'react';
 import Grid from './Components/Grid/Grid';
 
+// ICEBOX - useRef can allow this var to sit in the default export and persist across renders
+
+let hunch = 'hurdle'
+
 function App() {
+  const [flag, setFlag] = useState('')
   let idIndex = 0
   let rows = new Array(6)
   for(let i = 0; i < rows.length; i++){
@@ -15,22 +20,41 @@ function App() {
     }
     rows[i] = <Row key={i.toString()} squares={squares}/>;
   }
-  let grid = <Grid rows={rows}/>;
   
-  let inputBuffer = ''
+  let grid = <Grid rows={rows}/>;
+  const [hurdle, setHurdle] = useState([])
+  // let regex = /[h]/g
 
   useEffect(() => {
     /**
     document.addEventListener('keydown', (e) => {  
         e.preventDefault();
-        if(inputBuffer.length === 6 && e.code === 'Enter'){
+        if(hunch.length === 6 && e.code === 'Enter'){
           console.log('winner winner')
         }
     })
     */
-    function handleKeyDown(e){
-      // console.log(e.keyCode)
-      console.log(e.key)
+    function handleKeyDown(event){
+      let k = event.key
+      console.log(k)
+      switch(k){
+        case "Backspace":
+          hunch = hunch.slice(0, -1) //FIX!
+          break
+        default:
+          if(['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'].indexOf(k) !== -1){
+            if(hunch.length < 6){
+              hunch += 'k'
+              if(hunch.length === 6){
+                if(hunch === hurdle){
+                  setFlag('success')
+                }
+              }
+            }
+          }
+          return
+      }
+      event.preventDefault()
     }
     document.addEventListener('keydown', handleKeyDown)
 
@@ -47,10 +71,12 @@ function App() {
       </header>
       <main>
         <div className='rendered-grid-container'>{grid}</div>
-        {/* <Keypress /> */}
         <br/>
-        <Wordnik /> 
+        <Wordnik hurdle={hurdle} setHurdle={setHurdle}/> 
       </main>
+      <footer>
+        {flag === 'success' ? <h2>You've done it! 🏃💨💨💨🚧</h2> : <h2>Keep after it.</h2>}
+      </footer>
     </div>
   );
 }

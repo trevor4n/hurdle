@@ -22,8 +22,8 @@ const callRestAPI = async () => {
   return data
 }
 
-const Wordnik = () => {
-  const[hurdle, setHurdle] = useState([]) // STRETCH: verify best practice on setting initial state to Object.keys placeholder
+const Wordnik = (hurdle, setHurdle) => {
+  // const[hurdle, setHurdle] = useState([]) // STRETCH: verify best practice on setting initial state to Object.keys placeholder
 
   useEffect(() => {
     callRestAPI()

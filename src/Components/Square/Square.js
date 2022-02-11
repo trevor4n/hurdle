@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Square = () => {
-  
+const Square = (props) => {
+  const [val, setval] = useState('')
+  const [flag, setFlag] = useState('empty')
+  const [id, setId] = useState(props.id)
+
+  // console.log('id: ', props.id)
   return (
-    <div>Square</div>
+    <div className='square-container'>
+      <h2>{val}</h2>
+    </div>
   )
 }
 

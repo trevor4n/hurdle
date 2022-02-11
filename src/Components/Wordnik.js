@@ -18,7 +18,7 @@ function checkStatus(res) {
 const callRestAPI = async () => {
   const res = await fetch(restEndpoint)
   const data = await res.json()
-  console.log(data)
+  // console.log(data)
   return data
 }
 
@@ -39,9 +39,8 @@ const Wordnik = () => {
   if(Object.keys(hurdle).length > 0){
     return(
       <div>
-        <h3>Hurdle 🚧🏃💨</h3> <br />
         {/* Random Word*/}
-        <h4> {hurdle[0].word}</h4>
+        <h3> {hurdle[0].word}</h3>
       </div>
     )
   } else {

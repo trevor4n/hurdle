@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const restEndpoint = "http://localhost:8080/apiv1/"
 
@@ -18,11 +18,11 @@ function checkStatus(res) {
 const callRestAPI = async () => {
   const res = await fetch(restEndpoint)
   const data = await res.json()
-  // console.log(data)
+  console.log(data)
   return data
 }
 
-const Wordnik = (hurdle, setHurdle) => {
+const Wordnik = ({ hurdle, setHurdle }) => {
   // const[hurdle, setHurdle] = useState([]) // STRETCH: verify best practice on setting initial state to Object.keys placeholder
 
   useEffect(() => {
@@ -34,9 +34,11 @@ const Wordnik = (hurdle, setHurdle) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // console.log(hurdle)
+  // console.log(hurdle) 
   
-  if(Object.keys(hurdle).length > 0){
+  // if(Object.keys(hurdle).length > 0){
+  if(hurdle.length > 0){
+    // console.log(Object.keys(hurdle))
     return(
       <div>
         {/* Random Word*/}

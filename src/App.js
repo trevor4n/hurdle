@@ -5,12 +5,13 @@ import Row from './Components/Row/Row';
 import { useEffect, useState } from 'react';
 import Grid from './Components/Grid/Grid';
 
-// ICEBOX - useRef can allow this var to sit in the default export and persist across renders
-
-let hunch = 'hurdle'
+// ICEBOX - useRef can allow the hurdle var to sit in the default export and persist across renders
+let hunch = 'hurd'
 
 function App() {
+  const [hurdle, setHurdle] = useState([])
   const [flag, setFlag] = useState('')
+
   let idIndex = 0
   let rows = new Array(6)
   for(let i = 0; i < rows.length; i++){
@@ -22,8 +23,6 @@ function App() {
   }
   
   let grid = <Grid rows={rows}/>;
-  const [hurdle, setHurdle] = useState([])
-  // let regex = /[h]/g
 
   useEffect(() => {
     /**
@@ -57,7 +56,7 @@ function App() {
       event.preventDefault()
     }
     document.addEventListener('keydown', handleKeyDown)
-
+    
     return function cleanup(){
       document.removeEventListener('keydown', handleKeyDown)
     }

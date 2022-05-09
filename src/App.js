@@ -10,23 +10,28 @@ let hunch = '' //stored outside of app to prevent reassignment after every rende
 // ICEBOX - useRef can allow ^ this var to sit in the default export and persist across renders
 
 function App() {
+  const MAX_GUESSES = 6
+  const MAX_WORD_LENGTH = 5
+
   const [hurdle, setHurdle] = useState([])
   const [flag, setFlag] = useState('')
 
   let guess = 0
   let hunchCharOccurrences = {}
 
-  let idIndex = 0
-  let rows = new Array(6)
-  for(let i = 0; i < rows.length; i++){
-    let squares = new Array(5);
-    for (let j = 0; j < squares.length; j++){
-      squares[j] = <Square key={j.toString()} id={idIndex++}/>
-    }
-    rows[i] = <Row key={i.toString()} squares={squares}/>;
-  }
-  
-  let grid = <Grid rows={rows}/>;
+  // let idIndex = 0
+  // let rows = new Array(6)
+  // for(let i = 0; i < rows.length; i++){
+  //   let squares = new Array(5);
+  //   for (let j = 0; j < squares.length; j++){
+  //     squares[j] = <Square key={j.toString()} id={idIndex++}/>
+  //   }
+  //   rows[i] = <Row key={i.toString()} squares={squares}/>;
+  // }
+  // let grid = <Grid rows={rows}/>;
+  let grid = <Grid />;
+  let g = [...new Array(MAX_GUESSES)].map(a => new Array(MAX_WORD_LENGTH))
+  // console.log('g:',g)
 
   useEffect(() => {
     /**
@@ -42,14 +47,29 @@ function App() {
       console.log(k)
       switch(k){
         case "Backspace":
-          if(hunch.length > 0)
+          if(hunch.length > 0){
+            g[guess][hunch.length - 1] = null
             hunch = hunch.slice(0, -1) //FIX!
+            console.log('hunch:', hunch)
             setFlag('')
+          }
           break
         default:
           if(['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'].indexOf(k) !== -1){ //Sanatize the input
             if(hunch.length < 5){
+              g[guess][hunch.length] = k
               hunch += k
+              console.log('hunch:', hunch)
+              console.log('guess:', g[guess])
+              
+              // TODO: Visualize the input
+              // let v = grid.props.rows[0].props.squares[0].val
+              let v = grid
+              console.log('OBJ:', v.props)
+              
+              // v.style.visibility = "visible"
+              // v.setVal(k)
+
             }
             if(hunch.length === 5){
               if(hunch === hurdle){
@@ -71,6 +91,7 @@ function App() {
     return function cleanup(){
       document.removeEventListener('keydown', handleKeyDown)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function validateInput(){

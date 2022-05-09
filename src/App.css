@@ -33,7 +33,7 @@ h1 {
 }
 
 h2 {
-  visibility: hidden;
+  /* visibility: hidden; */
   margin:5px;
 }
 

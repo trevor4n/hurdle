@@ -10,8 +10,9 @@ let hunch = '' //stored outside of app to prevent reassignment after every rende
 // ICEBOX - useRef can allow ^ this var to sit in the default export and persist across renders
 
 function App() {
-  const [flag, setFlag] = useState('')
   const [hurdle, setHurdle] = useState([])
+  const [flag, setFlag] = useState('')
+
   let guess = 0
   let hunchCharOccurrences = {}
 
@@ -26,8 +27,6 @@ function App() {
   }
   
   let grid = <Grid rows={rows}/>;
-
-  // let regex = /[h]/g
 
   useEffect(() => {
     /**
@@ -68,7 +67,7 @@ function App() {
       event.preventDefault()
     }
     document.addEventListener('keydown', handleKeyDown)
-
+    
     return function cleanup(){
       document.removeEventListener('keydown', handleKeyDown)
     }

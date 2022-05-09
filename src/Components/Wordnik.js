@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const restEndpoint = "http://localhost:8080/apiv1/"
 
@@ -18,7 +18,7 @@ function checkStatus(res) {
 const callRestAPI = async () => {
   const res = await fetch(restEndpoint)
   const data = await res.json()
-  // console.log(data)
+  console.log(data)
   return data
 }
 
@@ -31,8 +31,10 @@ const Wordnik = ({hurdle, setHurdle}) => {
     .catch(err => {console.error('Wordnik Error:', err)})
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-    
-  if(Object.keys(hurdle).length > 0){
+  
+  // if(Object.keys(hurdle).length > 0){
+  // console.log(Object.keys(hurdle))
+  if(hurdle.length > 0){
     // TODO: if the wordnik official api filters are still broken, this may be a good place to iterate over the response and check whether results are proper nouns via a second call to wordnik. this would add value to requesting more than one result in the first place
     return(
       <div>

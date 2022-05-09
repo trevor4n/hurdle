@@ -22,30 +22,28 @@ const callRestAPI = async () => {
   return data
 }
 
-const Wordnik = (hurdle, setHurdle) => {
-  // const[hurdle, setHurdle] = useState([]) // STRETCH: verify best practice on setting initial state to Object.keys placeholder
-
+const Wordnik = ({hurdle, setHurdle}) => {
   useEffect(() => {
     callRestAPI()
-    // .then(checkStatus)
-    .then(res => setHurdle(res)) //*
+    // .then(res => checkStatus(res))
+    .then(res => setHurdle(res))
     // .then(res => {console.log('Wordnik random hurdle', hurdle)})
-    // .catch(err => {console.error('Wordnik Error:', err)})
+    .catch(err => {console.error('Wordnik Error:', err)})
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  // console.log(hurdle)
-  
+    
   if(Object.keys(hurdle).length > 0){
+    // TODO: if the wordnik official api filters are still broken, this may be a good place to iterate over the response and check whether results are proper nouns via a second call to wordnik. this would add value to requesting more than one result in the first place
     return(
       <div>
         {/* Random Word*/}
-        <h3> {hurdle[0].word}</h3>
+        <h3>Loaded hurdle ☑️</h3>
+        {/* <h3> {hurdle[0].word}</h3> */}
       </div>
     )
   } else {
     return(
-      <div>⚠️ Loading hurdle...</div>
+      <h3>⚠️ Loading hurdle...</h3>
     )
   }
 }

@@ -11,7 +11,7 @@ const Row = (props) => {
   
   // console.log('squares: ', props.squares)
   return (
-    <tr className='row-container'>{rowItems}</tr> 
+    <tr className='row-container'>{rowItems}</tr>
   )
 }
 

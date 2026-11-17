@@ -4,7 +4,6 @@ import Square from './Components/Square/Square';
 import Row from './Components/Row/Row';
 import { useEffect, useState } from 'react';
 import Grid from './Components/Grid/Grid';
-import { cleanup } from '@testing-library/react';
 
 let hunch = '' //stored outside of app to prevent reassignment after every render
 // ICEBOX - useRef can allow ^ this var to sit in the default export and persist across renders
@@ -95,7 +94,6 @@ function App() {
   }, [])
 
   function validateInput(){
-    cleanup()
     let out = []
     for(let i = 0; i < 5; i++){
       // let l = hunch[i]

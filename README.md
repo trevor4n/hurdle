@@ -25,7 +25,7 @@ Per the exercize specification: this project was built from scratch, written in 
  - [ ] Clone [this repository](https://github.com/trevor4n/hurdle.git) & the [hurdle backend](https://github.com/trevor4n/hurdle-backend.git)
  - [ ] w/in your terminal, navigate to the backend project directory
  - [ ] `$ touch .env`
- - [ ] add this secret to the env: `WORDNIK_KEY=vgde8llusetpskpd0l1gmu1l19auzk34tgbm3mo2ablj9zqql` and remember to save the edit
+ - [ ] get a free API key at https://developer.wordnik.com and add it to the env: `WORDNIK_KEY=your_key_here`, then save the edit
  - [ ] `$ node server.js`
  - [ ] In a separate terminal instance, navigate to the frontend project directory
  - [ ] `$ npm start`

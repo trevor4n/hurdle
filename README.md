@@ -13,10 +13,10 @@ Working remote (sub-24hr): [26b742d](https://github.com/trevor4n/hurdle/commit/2
 Per the exercize specification: this project was built from scratch, written in JS, utilizes the React framework, consumes a free API, and is maintained on GitHub!
 
 ### &#x1F534; Technologies Used
-  - [node](https://nodejs.org/en/) *version 17.5*
+  - [node](https://nodejs.org/en/) *version 26 (see `.nvmrc`)*
   - [Express](https://expressjs.com/).js
   - [React](https://reactjs.org/).js
-  - [Create React App ](https://github.com/facebook/create-react-app) *bootstrap* 
+  - [Vite](https://vite.dev/) *(originally bootstrapped with [Create React App](https://github.com/facebook/create-react-app))*
   - [Wordnik](https://developer.wordnik.com/docs) API
 
 [//CORS design pattern]:#(https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
@@ -26,9 +26,11 @@ Per the exercize specification: this project was built from scratch, written in 
  - [ ] w/in your terminal, navigate to the backend project directory
  - [ ] `$ touch .env`
  - [ ] get a free API key at https://developer.wordnik.com and add it to the env: `WORDNIK_KEY=your_key_here`, then save the edit
+ - [ ] `$ nvm use && npm install`
  - [ ] `$ node server.js`
  - [ ] In a separate terminal instance, navigate to the frontend project directory
- - [ ] `$ npm start`
+ - [ ] `$ nvm use && npm install`
+ - [ ] `$ npm start` (opens http://localhost:3000)
 
 ### &#x1F535; Major Wins
 - Overcomes the Cross-Origin Resource Sharing (CORS) issue 
